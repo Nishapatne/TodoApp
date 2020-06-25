@@ -1,0 +1,18 @@
+.header {
+    text-align: left;
+    font-size: 15px;
+    }
+.inputbox {
+    padding-left: 10px;
+    text-align: left;
+    border: none;
+    width: 90% !important;
+    height: 54px;
+    font-weight: bold;
+    font-size: x-large;
+    border-bottom:1 px navy;
+}
+.outerDiv{
+    padding-left: 10px;
+    text-align: left;
+}
