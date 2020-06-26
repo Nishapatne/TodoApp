@@ -8,11 +8,10 @@
 
 </head>
 <body>
-    <div class = "header">
-        <h1>To-Do List</h1>
-        <label>Create a new To-Do List</label>
-        <hr>
-    </div>
+    
+    <h1>To-Do List</h1>
+    <label class = "labelLine">Create a new To-Do List</label>
+    <hr>
 
     <input type = "textbox" class = "inputbox" placeholder="Name Your To-Do List">
 
@@ -22,11 +21,8 @@
     </div>
     
     <br><br>
-    <button type="button" class="btn btn-primary" onclick = "addNewItem()">+Add Item</button>
-    
-
-    <br><br>
-    <button type="button" class="btn btn-primary">Submit</button>
+    <button type="button" class="new-btn" onclick = "addNewItem()">+Add Item</button>
+    <button type="button" class="sub-btn"  onclick = "submit()">Submit</button>
 
     <script src = ..\JS\CreationView.js></script>
     

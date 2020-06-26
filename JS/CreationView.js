@@ -12,15 +12,14 @@ function addNewItem(){
     var newTextBox = document.createElement("input");
     newTextBox.type = "textbox"; 
     newTextBox.id = "text"+itemCount;
-    newTextBox.style = "width: 80%; height: 60%";
+    newTextBox.className = "textbox"
    
 
     var trashImg = document.createElement("IMG");
     trashImg.setAttribute("src", "../Images/delete.png");
-    trashImg.setAttribute("width", "25");
-    trashImg.setAttribute("height", "25");
     trashImg.type = "IMG";
     trashImg.id = "deleteIMG"+itemCount;
+    trashImg.className = "trashImg";
     trashImg.addEventListener("click", deleteItem);
 
     itemCount++;
@@ -51,14 +50,13 @@ function checkboxListner(){
 }
 
 function deleteItem() {
-    // var elem = document.getElementById("deleteIMG" + this.id);
       this.parentNode.parentNode.removeChild(this.parentNode);
-
-
 }
 
 
-
+function submit(){
+    alert("Your Task List Created!");
+}
 
 
 
