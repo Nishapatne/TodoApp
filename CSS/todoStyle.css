@@ -1,4 +1,11 @@
-.labelLine{
+.pageCenter{
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.headingLine{
     color: black;
     text-align: center;
     text-decoration: none;
@@ -6,7 +13,7 @@
 
 }
 
-.inputbox {
+.headlineBox {
     padding-left: 10px;
     text-align: left;
     border: none;
@@ -14,7 +21,6 @@
     height: 54px;
     font-weight: bold;
     font-size: x-large;
-    border-bottom:1 px navy;
 }
 .outerDiv{
     text-align: left;
@@ -27,29 +33,34 @@
 }
 
 .textbox{
-    width: 80%;
-  
+    width: 60%;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: medium;
 }
+
 
 .new-btn{
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
-.sub-btn{
+.submit-btn{
     background-color: #f44336;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 
 }
