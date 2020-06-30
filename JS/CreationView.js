@@ -1,5 +1,8 @@
 var itemCount = 1;
 var shouldAddItem = true;
+
+var todoListArray = [];
+
 function addNewItem(){
    
     if(!addItemValidation()){
@@ -58,7 +61,55 @@ function deleteItem() {
 
 
 function submit(){
-    alert("Your Task List Created!");
+    var todoList = {
+        title: "",
+        items: []
+    };
+    
+    var title =  document.getElementById("todoListTitle").value;
+
+    if(title == ""){
+        //add alert box
+        alert("Title can not be empty");
+        return;
+    }
+    else{
+        document.getElementById("todoListTitle").value= "";
+    }
+
+    todoList.title = title
+    for(i = 1;i<itemCount;i++){
+        var elem = document.getElementById("textbox" + i);
+        
+        if(elem!=null){
+           todoList.items.push(elem.value);
+           elem.value = "";
+        }
+    } 
+    todoListArray.push(todoList);
+    var newItem = createtodoList(todoList);
+    document.getElementById("todoList").append(newItem);
+    console.log(todoList);
+    console.log(todoListArray);
+}
+
+function createtodoList(todoList) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(todoList.title));
+
+        // Add it to the list:
+        list.appendChild(item);
+    
+
+    // Finally, return the constructed list:
+    return list;
 }
 
 function addItemValidation(){
