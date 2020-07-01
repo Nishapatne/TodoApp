@@ -56,7 +56,7 @@ function checkboxListner(){
 }
 
 function deleteItem() {
-      this.parentNode.parentNode.removeChild(this.parentNode);
+    this.parentNode.parentNode.removeChild(this.parentNode);
 }
 
 
@@ -87,29 +87,50 @@ function submit(){
         }
     } 
     todoListArray.push(todoList);
-    var newItem = createtodoList(todoList);
-    document.getElementById("todoList").append(newItem);
+
+
+    // For Displaying lists
+    var todoListsHtmlComponent = rendertodoList(todoListArray);
+    document.getElementById("todoList").innerHTML = '';
+    document.getElementById("todoList").append(todoListsHtmlComponent);
+
+    //for console
     console.log(todoList);
     console.log(todoListArray);
 }
 
-function createtodoList(todoList) {
-    // Create the list element:
-    var list = document.createElement('ul');
+function rendertodoList(todoListArray) {
+
+    var todoListsHtmlComponent= document.createElement('div');
+
+    todoListArray.forEach(todoList => {
+        var todoListHtmlComponent= createListComponent(todoList)
+        todoListsHtmlComponent.appendChild(todoListHtmlComponent);
+    });
+
+    return todoListsHtmlComponent;
+}
+
+function createListComponent(todoList) {
+
+    var listDiv = document.createElement('div');
+    var listTitle = document.createElement('h2');
+    var title = document.createTextNode(todoList.title);  // Set Title of List 1
+    listTitle.appendChild(title);  // Append Title to header
+    listDiv.appendChild(listTitle);  //Append header to list div
 
     
-        // Create the list item:
-        var item = document.createElement('li');
+    var itemsList = document.createElement('ul'); //create list for items
+    todoList.items.forEach(item => {
 
-        // Set its contents:
-        item.appendChild(document.createTextNode(todoList.title));
+        var itemHtmlElement = document.createElement('li');
+        itemHtmlElement.appendChild(document.createTextNode(item));
+        itemsList.appendChild(itemHtmlElement);
+    });
 
-        // Add it to the list:
-        list.appendChild(item);
-    
+    listDiv.appendChild(itemsList);  
 
-    // Finally, return the constructed list:
-    return list;
+    return listDiv;
 }
 
 function addItemValidation(){
