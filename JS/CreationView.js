@@ -42,7 +42,6 @@ function addNewItem(){
     outerDiv.appendChild(newDiv);
 }
 
-
 function checkboxListner(){
     
     var checkBox = document.getElementById(this.id);
@@ -76,16 +75,26 @@ function submit(){
 
     // todoList.title = title
     todoList.setTitle(title);
-    todoList.setStatus("active");
+    todoList.setStatus("Active");
 
     for(i = 1;i<itemCount;i++){
         var elem = document.getElementById("textbox" + i);
-        var item = new Item("itemId"+i);
-        item.setTitle(elem.vaue);
-        item.setStatus("pending");
-
+        
         if(elem!=null){
-           todoList.items.push(elem.value);
+            var item = new Item("itemId"+i);
+            var checkBox = document.getElementById(i);
+
+            if(checkBox.checked == true){
+                item.setStatus("Completed");
+            }
+            else{
+                item.setStatus("Pending");
+            }
+
+            item.setTitle(elem.value);
+            
+
+           todoList.addItem(item);
            elem.value = "";
         }
     } 
@@ -114,16 +123,18 @@ function createListComponent(todoList) {
 
     var listDiv = document.createElement('div');
     var listTitle = document.createElement('h2');
-    var title = document.createTextNode(todoList.title);  // Set Title of List 1
+    var title = document.createTextNode("( Status:"+todoList.getStatus()+") "+ todoList.getTitle());  // Set Title of List 1
     listTitle.appendChild(title);  // Append Title to header
     listDiv.appendChild(listTitle);  //Append header to list div
 
     
     var itemsList = document.createElement('ul'); //create list for items
-    todoList.items.forEach(item => {
+    var list = todoList.getItemList();
+    list.forEach(item => {
 
         var itemHtmlElement = document.createElement('li');
-        itemHtmlElement.appendChild(document.createTextNode(item));
+        //@nisha try to create seperate column for status 
+        itemHtmlElement.appendChild(document.createTextNode("( Status:"+item.getStatus()+") "+ item.getTitle()));
         itemsList.appendChild(itemHtmlElement);
     });
 
@@ -154,7 +165,7 @@ class Item {
     constructor(id) {
       this.id = id;
       this.itemTitle = "";
-      this.status = "pending";
+      this.status = "Pending";
     }
 
     setTitle(title){
@@ -164,6 +175,14 @@ class Item {
     setStatus(status){
         this.status = status;
     }
+
+    getTitle(){
+       return  this.itemTitle;
+    }
+
+    getStatus(){
+        return this.status;
+    }
 }
 
 
@@ -171,7 +190,7 @@ class TodoList {
     constructor(id) {
       this.id = id;
       this.listTitle = "";
-      this.status = "active";
+      this.status = "Active";
       this.itemList = [];
     }
 
@@ -189,5 +208,17 @@ class TodoList {
 
     addItem(item){
         this.itemList.push(item);
+    }
+
+    getTitle(){
+        return this.itemTitle;
+    }
+
+    getStatus(){
+        return this.status;
+    } 
+
+    getItemList(){
+        return this.itemList;
     }
 }
