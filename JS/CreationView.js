@@ -1,4 +1,5 @@
 var itemCount = 1;
+var listCount = 1;
 var shouldAddItem = true;
 
 var todoListArray = [];
@@ -61,11 +62,7 @@ function deleteItem() {
 
 
 function submit(){
-    var todoList = {
-        title: "",
-        items: []
-    };
-    
+    var todoList = new TodoList(listCount++);  
     var title =  document.getElementById("todoListTitle").value;
 
     if(title == ""){
@@ -77,38 +74,40 @@ function submit(){
         document.getElementById("todoListTitle").value= "";
     }
 
-    todoList.title = title
+    // todoList.title = title
+    todoList.setTitle(title);
+    todoList.setStatus("active");
+
     for(i = 1;i<itemCount;i++){
         var elem = document.getElementById("textbox" + i);
-        
+        var item = new Item("itemId"+i);
+        item.setTitle(elem.vaue);
+        item.setStatus("pending");
+
         if(elem!=null){
            todoList.items.push(elem.value);
            elem.value = "";
         }
     } 
+
     todoListArray.push(todoList);
 
-
     // For Displaying lists
-    var todoListsHtmlComponent = rendertodoList(todoListArray);
+    var todotitleListsHtmlComponent = rendertodoList(todoListArray);
     document.getElementById("todoList").innerHTML = '';
-    document.getElementById("todoList").append(todoListsHtmlComponent);
-
-    //for console
-    console.log(todoList);
-    console.log(todoListArray);
+    document.getElementById("todoList").append(todotitleListsHtmlComponent);
 }
 
 function rendertodoList(todoListArray) {
 
-    var todoListsHtmlComponent= document.createElement('div');
+    var todotitleListsHtmlComponent= document.createElement('div');
 
     todoListArray.forEach(todoList => {
-        var todoListHtmlComponent= createListComponent(todoList)
-        todoListsHtmlComponent.appendChild(todoListHtmlComponent);
+        var todoitemListHtmlComponent= createListComponent(todoList)
+        todotitleListsHtmlComponent.appendChild(todoitemListHtmlComponent);
     });
 
-    return todoListsHtmlComponent;
+    return todotitleListsHtmlComponent;
 }
 
 function createListComponent(todoList) {
@@ -151,10 +150,44 @@ function textboxChangecolor(){
     eltem.style.border = "1px solid black";
 }
 
+class Item {
+    constructor(id) {
+      this.id = id;
+      this.itemTitle = "";
+      this.status = "pending";
+    }
+
+    setTitle(title){
+        this.itemTitle = title;
+    }
+
+    setStatus(status){
+        this.status = status;
+    }
+}
 
 
+class TodoList {
+    constructor(id) {
+      this.id = id;
+      this.listTitle = "";
+      this.status = "active";
+      this.itemList = [];
+    }
 
+    setTitle(title){
+        this.itemTitle = title;
+    }
 
+    setStatus(status){
+        this.status = status;
+    }
 
+    setItemList(list){
+        this.ItemList  = list;
+    }
 
-
+    addItem(item){
+        this.itemList.push(item);
+    }
+}
