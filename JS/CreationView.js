@@ -9,27 +9,35 @@ function addNewItem(){
     if(!addItemValidation()){
         return;
     }
-    var outerDiv = document.getElementById("outerDiv")
+    // var outerDiv = document.getElementById("outerDiv")
+    var outerdiv = $('#outerdiv');
     var newDiv = document.createElement("div");
 
     var newCheckbox = document.createElement("input");
     newCheckbox.type = "checkbox";
-    newCheckbox.id = itemCount;  
-    newCheckbox.addEventListener("click" ,checkboxListner);
+    $(newCheckbox).addClass("checkbox");
+    $(newCheckbox).attr("id", itemCount);
+    $(newCheckbox).on('click', function() {
+        checkboxevent(this);
+    });
     
     var newTextBox = document.createElement("input");
     newTextBox.type = "textbox"; 
-    newTextBox.id = "textbox"+itemCount;
-    newTextBox.className = "textbox"
-    newTextBox.addEventListener("change", textboxChangecolor)
+    $(newTextBox).addClass("textbox");
+    $(newTextBox).attr("id","textbox"+     itemCount);
+    $(newTextBox).on('change', function(){
+        textboxchangecolor(this);
+    })
    
 
     var trashImg = document.createElement("IMG");
     trashImg.setAttribute("src", "../Images/delete.png");
     trashImg.type = "IMG";
-    trashImg.id = "deleteIMG"+itemCount;
-    trashImg.className = "trashImg";
-    trashImg.addEventListener("click", deleteItem);
+    $(trashImg).addClass("delImg")
+        $(trashImg).attr("id", itemCount);
+        $(trashImg).on('click', function(){
+            removediv(this);
+        })
 
     itemCount++;
 
@@ -42,27 +50,28 @@ function addNewItem(){
     outerDiv.appendChild(newDiv);
 }
 
-function checkboxListner(){
-    
-    var checkBox = document.getElementById(this.id);
-    var textBox = document.getElementById("textbox" + this.id);
-
-    if(checkBox.checked == true){
-        textBox.style.textDecoration = "line-through";
+function checkboxevent(elem){
+    var id = $(elem).attr("id");
+    var newcheckBox = $('#'+id);
+    var newtextBox = $('#'+"textbox"+id);
+    if(newcheckBox.is(":checked") == true){
+         $(newtextBox).addClass("checkBoxSelected");
+        
     }
     else{
-        textBox.style.textDecoration = "none";
+        $(newtextBox).addClass("checkBoxUnSelected");
     }
 }
 
-function deleteItem() {
-    this.parentNode.parentNode.removeChild(this.parentNode);
+function removediv(elem){
+    elem.parentNode.parentNode.removeChild(elem.parentNode);
 }
 
 
 function submit(){
     var todoList = new TodoList(listCount++);  
-    var title =  document.getElementById("todoListTitle").value;
+    // var title =  document.getElementById("todoListTitle").value;
+    var title =  $("#todoListTitle").val();
 
     if(title == ""){
         //add alert box
@@ -70,7 +79,7 @@ function submit(){
         return;
     }
     else{
-        document.getElementById("todoListTitle").value= "";
+        $("#todoListTitle").val("");
     }
 
     // todoList.title = title
@@ -78,11 +87,11 @@ function submit(){
     todoList.setStatus("Active");
 
     for(i = 1;i<itemCount;i++){
-        var elem = document.getElementById("textbox" + i);
+        var elem = $("#textbox" + i);
         
         if(elem!=null){
             var item = new Item("itemId"+i);
-            var checkBox = document.getElementById(i);
+            var checkBox = $(i);
 
             if(checkBox.checked == true){
                 item.setStatus("Completed");
@@ -91,11 +100,11 @@ function submit(){
                 item.setStatus("Pending");
             }
 
-            item.setTitle(elem.value);
+            item.setTitle(elem.val());
             
 
            todoList.addItem(item);
-           elem.value = "";
+           elem.val("");
         }
     } 
 
@@ -104,6 +113,7 @@ function submit(){
     // For Displaying lists
     var todotitleListsHtmlComponent = rendertodoList(todoListArray);
     document.getElementById("todoList").innerHTML = '';
+    // $("todoList").val('');
     document.getElementById("todoList").append(todotitleListsHtmlComponent);
 }
 
@@ -145,9 +155,9 @@ function createListComponent(todoList) {
 
 function addItemValidation(){
     for(i = 1;i<itemCount;i++){
-        var elem = document.getElementById("textbox" + i);
+        var elem = $("#textbox" + i);
         
-        if(elem!=null && elem.value==""){
+        if(elem!=null && elem.val()==""){
             alert("Item can not be empty");
             elem.style.border = "1px solid red";
             return false;
@@ -156,9 +166,13 @@ function addItemValidation(){
     return true;   
 }
 
-function textboxChangecolor(){
-    var eltem = document.getElementById(this.id);
-    eltem.style.border = "1px solid black";
+    let design = {
+        border: "1px solid black"
+    }
+function textboxchangecolor(elem){
+    var id = $(elem).attr("id");
+    var textboxcolor = $('#' + id);
+    textboxcolor.css(design);
 }
 
 class Item {
