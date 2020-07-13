@@ -38,6 +38,16 @@
     <script src = ..\JS\CreationView.js></script>
     <h1>To-Do Lists:</h1>
     <div id="todoList"></div>
-    
+    <div id="target"></div>
+
+
+    <script id="template" type="text/x-handlebars-template">
+       {{#each lists}}
+            List-Title : {{title}}<br>
+                {{#each lists}}
+                    Item{{@index}} : {{item}}<br>
+                {{/each}}
+        {{/each}}
+    </script>
 </body>
 </html>

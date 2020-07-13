@@ -38,7 +38,6 @@ function addNewItem(){
         $(trashImg).on('click', function(){
             removediv(this);
         })
-
     itemCount++;
 
     var brk = document.createElement("br");
