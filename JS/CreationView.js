@@ -54,21 +54,16 @@ function addNewItem(){
 
 function checkboxevent(elem){
     var id = $(elem).attr("id");
-    var newcheckBox = $('#'+id);
+    // var newcheckBox = $('#'+id);
     var newtextBox = $('#'+"textbox"+id);
-    if(newcheckBox.is(":checked") == true){
-         $(newtextBox).addClass("checkBoxSelected");
-       
-    }
-    else{
-        $(newtextBox).addClass("checkBoxUnSelected");
-    }
+   
+    $(newtextBox).toggleClass("checkBoxaction");   
+   
 }
 
 function removediv(elem){
     elem.parentNode.parentNode.removeChild(elem.parentNode);
 }
-
 
 function submit(){
     var todoList = new TodoList(listCount++);  
@@ -91,22 +86,26 @@ function submit(){
     todoList.setStatus("Active");
 
     for(i = 1;i<itemCount;i++){
+        
         var elem = $("#textbox" + i);
        
         if(elem!=null){
-            var item = new Item("itemId"+i);
-            var checkBox = $(i);
+            var item = new Item("itemId"+ i);
+            var checkBox = $("#"+i);
 
-            if(checkBox.checked == true){
-                item.setStatus("Completed");
+            if(checkBox.is (":checked")){
+            // if(    $('#' + i).is(":checked")){ 
+            item.setStatus("Completed");
             }
             else{
                 item.setStatus("Pending");
             }
 
             item.setTitle(elem.val());
-            list["items"].push({"item":elem.val()});
-           
+            list["items"].push({"item":item.getTitle(),
+                                "status":item.getStatus()});
+
+
            todoList.addItem(item);
            elem.val("");
         }
@@ -115,12 +114,12 @@ function submit(){
     todoListjsonData["lists"].push(list);
     todoListArray.push(todoList);
 
-
     // For Displaying lists
     var todotitleListsHtmlComponent = rendertodoListUsingTemplate(todoListArray);
-    document.getElementById("todoList").innerHTML = '';
-    // $("todoList").val('');
-    document.getElementById("todoList").append(todotitleListsHtmlComponent);
+    // document.getElementById("todoList").innerHTML = '';
+    $("#todoList").val('');
+    // document.getElementById("todoList").append(todotitleListsHtmlComponent);
+    $("#todoList").append(todotitleListsHtmlComponent)
 }
 
 function rendertodoList(todoListArray) {
@@ -179,20 +178,20 @@ function addItemValidation(){
        
         if(elem!=null && elem.val()==""){
             alert("Item can not be empty");
-            elem.style.border = "1px solid red";
+            $(elem).addClass("textboxbordercolor") ;
             return false;
         }
     }    
     return true;  
 }
 
-    let design = {
-        border: "1px solid black"
-    }
+    // let design = {
+    //     border: "1px solid black"
+    // }
 function textboxchangecolor(elem){
     var id = $(elem).attr("id");
     var textboxcolor = $('#' + id);
-    textboxcolor.css(design);
+    $(textboxcolor).addClass("headboxbordercolorign");
 }
 
 class Item {

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List View Page</title>
     <script type = "text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <link rel="stylesheet" href="../CSS/todoStyle.css">  
@@ -27,27 +27,48 @@
 
     <div id = "outerDiv" class = "outerDiv">
     </div>
-    
+   
     <br><br>
     <button type="button" class="new-btn" onclick = "addNewItem()">+Add Item</button>
     <button type="button" class="submit-btn"  onclick = "submit()">Submit</button>
 
     </div>
-    
-    
+   
+   
     <script src = ..\JS\CreationView.js></script>
     <h1>To-Do Lists:</h1>
     <div id="todoList"></div>
     <div id="target"></div>
 
+<!-- {
+   
+    "lists": [{
+        "title": "new name",
+        "items": [{
+            "item": "new name"
+        }, {
+            "item": "new name"
+        }]
+    }, {
+        "title": "new name",
+        "items": [{
+            "item": "new name"
+        }, {
+            "item": "new name"
+        }]
+    }]
+} -->
 
     <script id="template" type="text/x-handlebars-template">
        {{#each lists}}
-            List-Title : {{title}}<br>
-                {{#each lists}}
-                    Item{{@index}} : {{item}}<br>
+            <strong>List-Title : {{title}}</strong><br>
+                {{#each items}}
+                    <strong>Item{{@index}} :</strong> {{item}} -----------------
+                    <strong>Status :</strong> {{status}}<br>
                 {{/each}}
+                <br><br>
         {{/each}}
     </script>
+       
 </body>
 </html>

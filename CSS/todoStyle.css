@@ -71,10 +71,14 @@
     height: 25px;;
 }
 
-.checkBoxUnSelected{
-    text-decoration: none;
+.checkBoxaction{
+     text-decoration: line-through
 }
 
-.checkBoxSelected{
-    text-decoration: line-through
+.headboxbordercolor{
+    border: 1px solid black
+}
+
+.textboxbordercolor{
+    border: 1px solid red
 }
