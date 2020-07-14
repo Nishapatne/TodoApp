@@ -86,7 +86,7 @@ function submit(){
     todoList.setStatus("Active");
 
     for(i = 1;i<itemCount;i++){
-        
+        var elem1 = $("#" +i);
         var elem = $("#textbox" + i);
        
         if(elem!=null){
@@ -107,6 +107,7 @@ function submit(){
 
 
            todoList.addItem(item);
+           elem1. prop("checked", false);
            elem.val("");
         }
     }
