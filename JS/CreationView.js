@@ -1,7 +1,7 @@
 var itemCount = 1;
 var listCount = 1;
 var shouldAddItem = true;
-
+var isInEditMode = true;
 var todoListArray = [];
 var todoListjsonData = {};
 todoListjsonData["lists"] = [];
@@ -14,6 +14,7 @@ function addNewItem(){
     // var outerDiv = document.getElementById("outerDiv")
     var outerdiv = $('#outerdiv');
     var newDiv = document.createElement("div");
+    $(newDiv).addClass("newdivision");
 
     var newCheckbox = document.createElement("input");
     newCheckbox.type = "checkbox";
@@ -22,15 +23,25 @@ function addNewItem(){
     $(newCheckbox).on('click', function() {
         checkboxevent(this);
     });
-   
+
+
+    if(isInEditMode){
+
     var newTextBox = document.createElement("input");
     newTextBox.type = "textbox";
     $(newTextBox).addClass("textbox");
-    $(newTextBox).attr("id","textbox"+     itemCount);
+    $(newTextBox).attr("id","textbox"+ itemCount);
     $(newTextBox).on('change', function(){
         textboxchangecolor(this);
     })
-   
+    }
+    else{
+        // var textbox = document.createElement("label")
+    var newTextBox =  document.createElement("Label");
+    newTextBox.setAttribute("for",itemCount);
+    newTextBox.innerHTML = "label Mode";
+    $(newTextBox).addClass("labeltext");    
+    }
 
     var trashImg = document.createElement("IMG");
     trashImg.setAttribute("src", "../Images/delete.png");
@@ -43,8 +54,8 @@ function addNewItem(){
 
     itemCount++;
 
-    var brk = document.createElement("br");
-    newDiv.appendChild(brk);
+    // var brk = document.createElement("br");
+    // newDiv.appendChild(brk);
 
     newDiv.appendChild(newCheckbox);
     newDiv.appendChild(newTextBox);
@@ -181,10 +192,15 @@ function addItemValidation(){
             alert("Item can not be empty");
             $(elem).addClass("textboxbordercolor") ;
             return false;
+                
         }
+            else{
+                $(elem).addClass("textboxbordercolorNew") ;
+            }
     }    
     return true;  
 }
+    // $(newtextBox).toggleClass("checkBoxaction");  
 
     // let design = {
     //     border: "1px solid black"
@@ -192,7 +208,7 @@ function addItemValidation(){
 function textboxchangecolor(elem){
     var id = $(elem).attr("id");
     var textboxcolor = $('#' + id);
-    $(textboxcolor).addClass("headboxbordercolorign");
+    $(textboxcolor).addClass("headboxbordercolor");
 }
 
 class Item {

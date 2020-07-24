@@ -1,84 +1,152 @@
-.pageCenter{
-    margin: auto;
-    width: 60%;
-    border: 3px solid black;
-    padding: 10px;
+.pagestyle{
+    padding-top: 20px;
+    padding-bottom: 90px;
+    padding-right: 100px;
+    padding-left: 100px;
 }
 
-.headingLine{
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
+.outerpage{
+    margin: auto;
+    height: 500px;
+    width: 70%;
+    padding-bottom: 60px;
+    padding-top: 50px;
+    padding-right: 70px;
+    padding-left: 70px;
+    border-radius: 13px 13px;
+    background: linear-gradient(90deg, rgb(249,189,193) 0%, rgb(189,141,198)100%);
+}
 
+.pageCenter{
+    margin: auto ;
+    height: 390px;
+    width: 42%;
+    padding-top: 23px;
+    padding-bottom: 28px;
+    padding-right: 30px;
+    padding-left: 23px;
+    border-radius: 10px 10px;   
+    background-color: #FFFFFF; 
+    overflow: auto;
+}
+
+.heading{
+    margin: 2px;  
+}
+
+.headingline{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 16px;
+    color:#9775B9;
+}
+
+.listimg{
+    height:25px;
+    width:25px;
+    float: right;
 }
 
 .headlineBox {
-    padding-left: 10px;
-    text-align: left;
+    color: #828282;
     border: none;
-    width: 90% !important;
-    height: 54px;
-    font-weight: bold;
-    font-size: x-large;
+    height: 25px;
+    width: 80% !important;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
 }
+    
 .outerDiv{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.newdivision{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
     text-align: left;
 }
 
-.trashImg{
-    padding: 1px 2px;
-    width: 25px;
-    height: 25px;
+.checkbox{
+    height: 15px;
+    width: 12px; 
+    margin: 1px;
+    position: relative;
+    color: #E9E9E9;
 }
 
 .textbox{
-    width: 60%;
-    padding-top: 10px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    font-size: medium;
+    height: 20px;
+    width: 70%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-left: 20px;
+    padding: 2px;
+    font-size: 13px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    border: hidden;
+    color: #828282;
 }
 
-
-.new-btn{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.submit-btn{
-    background-color: #f44336;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-
+.labeltext{
+    padding: 40px;
 }
 
 .delImg{
-    padding: 1px 2px;
-    width: 25px;
-    height: 25px;;
+    width: 15px;
+    height: 15px;
+    float: right;
+    margin-top: 5px;
 }
 
+.new-btn{
+    background-color: #FFBB74;
+    color:#FFFFFF;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size:13px;
+    border-radius: 4px 4px; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.submit-btn{
+    background-color:#FFBB74;
+    color:#FFFFFF;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 4px 4px; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    }
+
 .checkBoxaction{
-     text-decoration: line-through
+    text-decoration: line-through;
+    color: #D2D2D2;
 }
 
 .headboxbordercolor{
-    border: 1px solid black
+    border: hidden;
 }
 
 .textboxbordercolor{
     border: 1px solid red
+}
+
+.textboxbordercolorNew{
+    border: hidden;
 }

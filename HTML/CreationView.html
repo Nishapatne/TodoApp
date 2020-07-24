@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List View Page</title>
+   <style>
+       @font-face {
+        font-family: 'MyWebFont';
+        src:  url('myfont.woff2') format('woff2'),
+              url('myfont.woff') format('woff');}
+   </style> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
     <script type = "text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
@@ -12,26 +21,23 @@
     <link rel="stylesheet" href="../CSS/todoStyle.css">  
 
 </head>
-<body>
+<body class = "pagestyle">
+    <div class = "outerpage">
+        <div class = "pageCenter">
+            <div class = "heading">
+                <label class = "headingline">Create New List</label>
+                <img src = "..\Images\iconfinder.png" class = "listimg">
+            </div>            
+        <hr>
 
-    <div class = "pageCenter">
+        <input type = "textbox" id="todoListTitle" class = "headlineBox" placeholder="Name Your To-Do List">
+        <br>
+        <div id = "outerDiv" class = "outerDiv"></div>
+        <br>
+        <button type="button" class="new-btn" onclick = "addNewItem()">+Add Item</button>
+        <button type="button" class="submit-btn"  onclick = "submit()">Submit</button>
 
-
-    <h1>Create New List</h1>
-    <label class = "headingLine">Create a new To-Do List</label>
-    <hr style = "font-weight: bold">
-
-    <input type = "textbox" id="todoListTitle" class = "headlineBox" placeholder="Name Your To-Do List">
-
-    <br><br>
-
-    <div id = "outerDiv" class = "outerDiv">
-    </div>
-   
-    <br><br>
-    <button type="button" class="new-btn" onclick = "addNewItem()">+Add Item</button>
-    <button type="button" class="submit-btn"  onclick = "submit()">Submit</button>
-
+        </div>
     </div>
    
    
