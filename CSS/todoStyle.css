@@ -1,33 +1,42 @@
-.pagestyle{
-    padding-top: 20px;
-    padding-bottom: 90px;
-    padding-right: 100px;
-    padding-left: 100px;
+body{
+    text-align: left;
+    margin: 0vmax;
+    padding: 4vmax;
+    widows: 100vw;
 }
-
-.outerpage{
-    margin: auto;
-    height: 500px;
-    width: 70%;
-    padding-bottom: 60px;
-    padding-top: 50px;
-    padding-right: 70px;
-    padding-left: 70px;
+.pagestyle{
+    margin: 0vmax;
+    padding: 0vmax;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+.outerpage
+{
+    height: 580px;
+    width: 700px;
+    margin: 2vmax;
+    display: inline-block;
+    padding: 2vmax;
     border-radius: 13px 13px;
     background: linear-gradient(90deg, rgb(249,189,193) 0%, rgb(189,141,198)100%);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
-
-.pageCenter{
-    margin: auto ;
-    height: 390px;
-    width: 42%;
-    padding-top: 23px;
-    padding-bottom: 28px;
-    padding-right: 30px;
-    padding-left: 23px;
+.pageCenter
+{
+    height: 470px;
+    width: 300px;
+    margin:2vmax;
+    text-align: left;
+    padding: 2vmax;
+    display: inline-block;
     border-radius: 10px 10px;   
     background-color: #FFFFFF; 
     overflow: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 .heading{
@@ -40,6 +49,9 @@
     font-style: normal;
     font-size: 16px;
     color:#9775B9;
+    text-align: justify;
+    opacity: 0.7;
+    line-height:25px;
 }
 
 .listimg{
@@ -53,22 +65,22 @@
     border: none;
     height: 25px;
     width: 80% !important;
+    margin: 2px;
     font-size: 14px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
+    text-align: justify;
+    opacity: 0.9;
+    line-height:25px;
 }
     
 .outerDiv{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
+    margin: 5px;
 }
 
 .newdivision{
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 5px;
+    padding: 5px;
     text-align: left;
 }
 
@@ -83,9 +95,7 @@
 .textbox{
     height: 20px;
     width: 70%;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    margin-left: 20px;
+    margin: 1px 1px 1px 20px;
     padding: 2px;
     font-size: 13px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -93,10 +103,14 @@
     font-style: normal;
     border: hidden;
     color: #828282;
+    text-align: justify;
+    line-height:25px;
 }
 
 .labeltext{
     padding: 40px;
+    text-align: justify;
+    margin: .1rem;
 }
 
 .delImg{
@@ -110,7 +124,7 @@
     background-color: #FFBB74;
     color:#FFFFFF;
     padding: 5px 8px;
-    text-align: center;
+    text-align: justify;
     text-decoration: none;
     display: inline-block;
     font-size:13px;
@@ -118,13 +132,14 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
+    line-height:25px;
 }
 
 .submit-btn{
     background-color:#FFBB74;
     color:#FFFFFF;
     padding: 5px 8px;
-    text-align: center;
+    text-align: justify;
     text-decoration: none;
     display: inline-block;
     font-size: 13px;
@@ -132,12 +147,17 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
+    line-height:25px;
     }
 
 .checkBoxaction{
     text-decoration: line-through;
     color: #D2D2D2;
 }
+
+/* .checkBoxactionunchecked{
+    text-decoration: none;;
+} */
 
 .headboxbordercolor{
     border: hidden;
